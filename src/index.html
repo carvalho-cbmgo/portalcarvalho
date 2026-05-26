@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Carvalho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal/css/portal.css" />
+  <link rel="stylesheet" href="portal/css/portal-auth.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-brand-panel">
+      <div class="brand-badge">PC</div>
+      <p class="eyebrow">Acesso centralizado</p>
+      <h1>Portal Carvalho</h1>
+      <p class="lead">Acesse seus sistemas em um único ambiente com validação de usuário e permissões por módulo.</p>
+      <div class="system-list">
+        <span>FinanceGO</span>
+        <span>Remuneração CBMGO</span>
+        <span>ArremataCarvalho</span>
+      </div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Entrar no portal</h2>
+      <p class="muted">Use seu e-mail e senha cadastrados no Supabase Auth.</p>
+
+      <form id="loginForm" class="auth-form">
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" autocomplete="email" placeholder="seuemail@dominio.com" required />
+
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Digite sua senha" required />
+
+        <button class="btn primary full" type="submit">Acessar Portal</button>
+      </form>
+
+      <div class="auth-actions-row">
+        <button id="sendMagicLink" type="button" class="btn ghost full">Enviar link mágico por e-mail</button>
+      </div>
+
+      <p id="authMessage" class="auth-message" role="status"></p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal/js/env.js"></script>
+  <script src="portal/js/supabase-config.js"></script>
+  <script src="portal/js/portal-auth.js"></script>
+</body>
+</html>

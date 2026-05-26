@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard — Portal Carvalho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portal/css/portal.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mini"><span>PC</span><div><strong>Portal Carvalho</strong><small>Central de sistemas</small></div></div>
+    <div class="topbar-actions"><span id="userBadge" class="user-badge">Carregando...</span><button id="logoutBtn" class="btn ghost" type="button">Sair</button></div>
+  </header>
+
+  <main class="portal-container">
+    <section class="hero-card">
+      <p class="eyebrow">Bem-vindo</p>
+      <h1>Escolha o sistema que deseja acessar</h1>
+      <p>Os cards abaixo são exibidos conforme as permissões registradas no Supabase.</p>
+    </section>
+
+    <section class="systems-grid" id="systemsGrid">
+      <article class="system-card" data-system="remuneracao">
+        <div class="system-icon">₢</div>
+        <h2>Remuneração CBMGO</h2>
+        <p>Simulador de proventos, descontos, férias, 13º e valores anuais.</p>
+        <a class="btn primary" href="remuneracao/">Acessar sistema</a>
+      </article>
+      <article class="system-card locked" data-system="financego">
+        <div class="system-icon">F</div>
+        <h2>FinanceGO</h2>
+        <p>Módulo reservado para integração futura ao Portal Carvalho.</p>
+        <button class="btn" type="button" disabled>Em breve</button>
+      </article>
+      <article class="system-card locked" data-system="arremata">
+        <div class="system-icon">A</div>
+        <h2>ArremataCarvalho</h2>
+        <p>Módulo reservado para integração futura com backend/API protegida.</p>
+        <button class="btn" type="button" disabled>Em breve</button>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="portal/js/env.js"></script>
+  <script src="portal/js/supabase-config.js"></script>
+  <script src="portal/js/dashboard.js"></script>
+</body>
+</html>
