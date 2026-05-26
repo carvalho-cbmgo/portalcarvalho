@@ -12,21 +12,17 @@
 <body class="auth-page">
   <main class="auth-shell">
     <section class="auth-brand-panel">
-      <div class="brand-badge">PC</div>
-      <p class="eyebrow">Acesso centralizado</p>
-      <h1>Portal Carvalho</h1>
-      <p class="lead">Acesse seus sistemas em um único ambiente com validação de usuário e permissões por módulo.</p>
-      <div class="system-list">
-        <span>FinanceGO</span>
-        <span>Remuneração CBMGO</span>
-        <span>ArremataCarvalho</span>
+      <div class="brand-badge" aria-label="Logo Portal Carvalho">
+        <span class="brand-logo" aria-hidden="true">
+          <span class="brand-logo-ring"></span>
+          <span class="brand-logo-axis"></span>
+          <span class="brand-logo-core"></span>
+        </span>
       </div>
+      <h1>Portal Carvalho</h1>
     </section>
 
-    <section class="auth-card" aria-labelledby="loginTitle">
-      <h2 id="loginTitle">Entrar no portal</h2>
-      <p class="muted">Use seu e-mail e senha cadastrados no Supabase Auth.</p>
-
+    <section class="auth-card" aria-label="Acesso ao portal">
       <form id="loginForm" class="auth-form">
         <label for="email">E-mail</label>
         <input id="email" name="email" type="email" autocomplete="email" placeholder="seuemail@dominio.com" value="maykocarvalho@gmail.com" required />

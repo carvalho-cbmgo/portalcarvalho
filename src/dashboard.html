@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard — Portal Carvalho</title>
+  <title>Dashboard - Portal Carvalho</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portal/css/portal.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand-mini"><span>PC</span><div><strong>Portal Carvalho</strong><small>Central de sistemas</small></div></div>
+    <div class="brand-mini">
+      <span class="brand-mini-mark" aria-hidden="true">
+        <span class="brand-logo">
+          <span class="brand-logo-ring"></span>
+          <span class="brand-logo-axis"></span>
+          <span class="brand-logo-core"></span>
+        </span>
+      </span>
+      <div><strong>Portal Carvalho</strong><small>Central de sistemas</small></div>
+    </div>
     <div class="topbar-actions"><span id="userBadge" class="user-badge">Carregando...</span><button id="logoutBtn" class="btn ghost" type="button">Sair</button></div>
   </header>
 
@@ -23,7 +32,7 @@
 
     <section class="systems-grid" id="systemsGrid">
       <article class="system-card" data-system="remuneracao">
-        <div class="system-icon">₢</div>
+        <div class="system-icon">•</div>
         <h2>Remuneração CBMGO</h2>
         <p>Simulador de proventos, descontos, férias, 13º e valores anuais.</p>
         <a class="btn primary" href="remuneracao/">Acessar sistema</a>
