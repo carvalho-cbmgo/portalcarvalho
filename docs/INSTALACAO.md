@@ -1,8 +1,8 @@
-# Instalação do Portal Carvalho
+# Instalacao do Portal Carvalho
 
 ## 1. Enviar ao GitHub
 
-Na pasta extraída:
+Na pasta extraida:
 
 ```bash
 git init
@@ -18,7 +18,7 @@ git push -u origin main
 1. Crie um projeto no Supabase.
 2. Em **Authentication**, habilite login por e-mail/senha e/ou magic link.
 3. Execute `sql/supabase_portal.sql` no SQL Editor.
-4. Crie o usuário em Authentication.
+4. Crie o usuario em Authentication.
 5. Libere o acesso:
 
 ```sql
@@ -33,13 +33,16 @@ where email = 'email@dominio.com';
 
 - Build command: `npm run build`
 - Output directory: `dist`
-- Variáveis:
+- Variaveis:
   - `SUPABASE_URL`
   - `SUPABASE_ANON_KEY`
   - `REMUNERACAO_REF=auto`
+  - Aliases tambem aceitos:
+    - `NEXT_PUBLIC_SUPABASE_URL`
+    - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 
 ### Cloudflare Pages
 
 - Build command: `npm run build`
 - Output directory: `dist`
-- Variáveis iguais às da Vercel.
+- Variaveis iguais as da Vercel.

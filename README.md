@@ -32,6 +32,13 @@ SUPABASE_ANON_KEY=SUA_CHAVE_ANON_PUBLICA
 REMUNERACAO_REF=auto
 ```
 
+Tambem sao aceitos estes aliases (ex.: Vercel/Next.js):
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=SUA_CHAVE_PUBLICAVEL_DO_SUPABASE
+```
+
 Use `REMUNERACAO_REF=auto` para buscar automaticamente a branch `v-*` mais alta do repositório `militaresgo/remuneracao`. Para travar uma versão específica, use por exemplo:
 
 ```env

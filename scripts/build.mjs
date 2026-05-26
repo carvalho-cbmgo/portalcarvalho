@@ -12,6 +12,8 @@ const root = path.resolve(__dirname, '..');
 const dist = path.join(root, 'dist');
 const tmp = path.join(root, '.tmp-remuneracao');
 const repoZip = path.join(root, '.tmp-remuneracao.zip');
+const DEFAULT_SUPABASE_URL = 'https://jlilckqpgxoirbyrhdwb.supabase.co';
+const DEFAULT_SUPABASE_KEY = 'sb_publishable_cxbWuYatVqqLOgmM1CCmzQ_KnFgovTL';
 
 async function getJson(url){
   return new Promise((resolve, reject) => {
@@ -56,6 +58,23 @@ async function unzip(zipPath, outDir){
   catch { await execFileAsync('python', ['-m', 'zipfile', '-e', zipPath, outDir]); }
 }
 
+function resolveSupabaseUrl(){
+  return (
+    process.env.SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    DEFAULT_SUPABASE_URL
+  );
+}
+
+function resolveSupabaseKey(){
+  return (
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    DEFAULT_SUPABASE_KEY
+  );
+}
+
 async function injectGuard(remDir){
   const indexPath = path.join(remDir, 'index.html');
   if (!existsSync(indexPath)) return;
@@ -72,7 +91,7 @@ async function main(){
   await mkdir(dist, { recursive:true });
   await cp(path.join(root, 'src'), dist, { recursive:true });
 
-  const envJs = `window.PORTAL_ENV = {\n  SUPABASE_URL: ${JSON.stringify(process.env.SUPABASE_URL || '')},\n  SUPABASE_ANON_KEY: ${JSON.stringify(process.env.SUPABASE_ANON_KEY || '')}\n};\n`;
+  const envJs = `window.PORTAL_ENV = {\n  SUPABASE_URL: ${JSON.stringify(resolveSupabaseUrl())},\n  SUPABASE_ANON_KEY: ${JSON.stringify(resolveSupabaseKey())}\n};\n`;
   await writeFile(path.join(dist, 'portal/js/env.js'), envJs, 'utf8');
 
   const ref = await resolveRemuneracaoRef();
