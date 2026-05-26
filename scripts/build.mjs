@@ -80,8 +80,28 @@ async function injectGuard(remDir){
   if (!existsSync(indexPath)) return;
   let html = await readFile(indexPath, 'utf8');
   const guard = `\n  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>\n  <script src="../portal/js/env.js"></script>\n  <script src="../portal/js/supabase-config.js"></script>\n  <script src="../portal/js/auth-guard.js" data-permission="acesso_remuneracao_cbmgo"></script>\n`;
-  html = html.replace('</head>', `${guard}</head>`);
-  html = html.replace('<body>', '<body><noscript>Este sistema exige JavaScript para validar o acesso.</noscript>');
+  const returnButtonStyle = `\n  <style id="portal-return-style">\n    .portal-header-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}\n    .portal-header-row h1{margin:0}\n    .portal-return-btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.18);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}\n    .portal-return-btn:hover{background:rgba(0,0,0,.3)}\n    @media (max-width:900px){.portal-header-row{align-items:flex-start}.portal-return-btn{width:100%}}\n  </style>\n`;
+
+  if (!html.includes('auth-guard.js')) {
+    html = html.replace('</head>', `${guard}</head>`);
+  }
+
+  const hasReturnButton = html.includes('Retornar ao Painel Carvalho');
+  if (!hasReturnButton) {
+    const withOpenRow = html.replace(/<h1\b[^>]*>/, match => `<div class="portal-header-row">${match}`);
+    if (withOpenRow !== html) {
+      html = withOpenRow.replace('</h1>', '</h1><a class="portal-return-btn" href="../dashboard.html">Retornar ao Painel Carvalho</a></div>');
+    }
+  }
+
+  if (!html.includes('portal-return-style')) {
+    html = html.replace('</head>', `${returnButtonStyle}</head>`);
+  }
+
+  if (!html.includes('Este sistema exige JavaScript para validar o acesso.')) {
+    html = html.replace('<body>', '<body><noscript>Este sistema exige JavaScript para validar o acesso.</noscript>');
+  }
+
   await writeFile(indexPath, html, 'utf8');
 }
 
